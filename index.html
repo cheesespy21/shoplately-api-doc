@@ -13,7 +13,7 @@
 
       <script>
         $(function() {
-          setupLanguages(["shell","ruby","python"]);
+          setupLanguages(["shell"]);
         });
       </script>
   </head>
@@ -29,8 +29,6 @@
       <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -48,59 +46,39 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="http://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p><a href="http://shoplately.com">Shoplately</a> API documentation</p>
 
 <h1 id="authentication">Authentication</h1>
 
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
 <blockquote>
 <p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>Shoplately expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p><code class="prettyprint">X-SHOPLATELY-API-KEY: meowmeowmeow</code></p>
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-<h1 id="kittens">Kittens</h1>
+          <h1 id="product">Product</h1>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h2 id="upload-new-product">Upload New Product</h2>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<h2 id="update-product-info">Update Product Info</h2>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id="get-all-products">Get All Products</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://shoplately.com/api/v1/products"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
 <blockquote>
@@ -108,18 +86,289 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">198378</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"groupDealId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8625</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spring Buds Necklace"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"limitNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"soldNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"retailPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"salePrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"everyDayPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"flatShippingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1388702170</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"soldOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gift"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"maxPurchase"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numOption"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"companyDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"handlingDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"211-8625-198378"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"backInStock"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numFavorites"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"categoryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"groupStaging"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"publishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1389626724</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastPublishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1389626724</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"310737"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">310737</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"flashDealId"</span><span class="p">:</span><span class="w"> </span><span class="mi">198378</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"limitNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"soldNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"leftNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"soldOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1388702170</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LW-N9368-TQ"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionDetailId1"</span><span class="p">:</span><span class="w"> </span><span class="mi">489114</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionDetailId2"</span><span class="p">:</span><span class="w"> </span><span class="mi">489117</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionDetail1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">489114</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One size"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"flashOptionDetailImgId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"optionDetail2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">489117</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turquoise"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Color"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"flashOptionDetailImgId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turquoise"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"310740"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">310740</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"flashDealId"</span><span class="p">:</span><span class="w"> </span><span class="mi">198378</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"limitNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"soldNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"leftNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"soldOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1388702170</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LW-N9368-YL"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionDetailId1"</span><span class="p">:</span><span class="w"> </span><span class="mi">489114</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionDetailId2"</span><span class="p">:</span><span class="w"> </span><span class="mi">489120</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionDetail1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">489114</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One size"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"flashOptionDetailImgId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"optionDetail2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">489120</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yellow"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Color"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"flashOptionDetailImgId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"optionDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yellow"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Necklaces"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"left"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"right"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">8604</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parentCateogries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jewelry"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"left"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"right"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">26638</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentCateogries"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"parentCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accessories"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"left"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"right"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">32357</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentCateogries"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"parentCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accessories"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"left"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"right"</span><span class="p">:</span><span class="w"> </span><span class="mi">178</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">35069</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentCateogries"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"parentCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"parentCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jewelry"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"left"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"right"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">26638</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentCateogries"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"parentCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accessories"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"left"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"right"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">32357</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentCateogries"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"parentCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accessories"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"left"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"right"</span><span class="p">:</span><span class="w"> </span><span class="mi">178</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">35069</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parentCateogries"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"parentCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+          </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-necklaces"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LILY WANG"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"vanityUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shoplilywang"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shoplilywang"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.shoplilywang.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lily Wang is an online boutique based in Downtown Los Angeles.  We offer a hand curated selection of quality women's apparel and accessories for affordable prices."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO@SHOPLILYWANG.COM"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"webImg"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"promoCodeScreen"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"websiteRedeem"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"supportEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO@SHOPLILYWANG.COM"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"techEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO@SHOPLILYWANG.COM"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"billingEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INFO@SHOPLILYWANG.COM"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"feedbackTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">726</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"feedbackRating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.5"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"feedbackPercent"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numFavorites"</span><span class="p">:</span><span class="w"> </span><span class="mi">12092</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1351544231</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"facebookUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.facebook.com/lilywangshop"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"twitterUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/shoplilywang"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastSentTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastPublishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1419888237</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"customDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"merchantMemo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pinterestUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://pinterest.com/search/?q=shoplilywang"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"instagramUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.instagram.com/shoplilywang"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"returnPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Returns are super easy! You can submit a return request through Shoplately within 14 days after the item is received. We will gladly accept any unworn items with tags still on."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"bannedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"managerUserId"</span><span class="p">:</span><span class="w"> </span><span class="mi">335006</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"acquisition"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"modifiedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1401892687</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"managerReminder"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"flashPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flash"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leftNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/product/198378/spring_buds_necklace"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numPriceOption"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"maxPurchaseGift"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1389628800</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1389024000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"locked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/group/shoplilywang/8625"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"groupDeal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8625</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"level"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW YEAR NEW YOU: Great New Items On Sale"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1388507662</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1389024000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1389628800</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"soldOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"permanentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shoplilywang/8625"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"soldNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyBillingStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"comission"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.15"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"enrolling"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"featured"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shippingPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"specialInstruction"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"defaultSort"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shorterTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEW YEAR NEW YOU: Great New Items On Sale"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"running"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"durationDay"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/group/shoplilywang/8625"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"metaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyItems"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"totalItems"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companySold"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"originalType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"isEveryDayDeal"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isFlash"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isProduct"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"isPick"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"clickInfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"featuredTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"groupDealAddTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1388702170</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sizeChartId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"feedbackRating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"feedbackTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipsInMin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipsInMax"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -128,7 +377,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">GET /api/v1/products</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -140,55 +389,33 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>limit</td>
+<td>25</td>
+<td>The number of products to be retrieved</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>page</td>
+<td>1</td>
+<td>page number</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id="get-a-specific-product">Get a Specific Product</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://shoplately.com/api/v1/products/&lt;ID&gt;"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Isis"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">If you&rsquo;re not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+<p>This endpoint retrieves a specific product.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET /api/v1/products/&lt;ID&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -200,9 +427,1077 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>The ID of the product</td>
 </tr>
 </tbody></table>
+
+<h2 id="upload-a-new-product">Upload a New Product</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"http://shoplately.com/api/v1/products"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'[
+        {
+          "title": "Spring Buds Necklace",
+          "salePrice": 19,
+          "quantity": 0,
+          "everyDayPrice": 19,
+          "shippingPrice": "0.00",
+          "sku": "211-8625-198378",
+          "material": "- Metal.",
+          "measurement": "- About 18\" in length, 2\" extender.",
+          "description": "- Color: Comes in Bright yellow; Turquoise.\n- Lobster clasp closure.\n- Lead and nickel safe."
+          "categoryId": 47,
+          "size" : [
+            "small",
+            "large"
+          ],
+          "options": {
+            "type": "color",
+            "option": [
+              {
+                "label": "Turquoise",
+                "images": [
+                  "http://imageserver.com/a.jpg",
+                  "http://imageserver.com/b.jpg",
+                  "http://imageserver.com/c.jpg"
+                ]
+              },
+              {
+                "label": "Yellow",
+                "images": [
+                  "http://imageserver.com/d.jpg",
+                  "http://imageserver.com/e.jpg",
+                  "http://imageserver.com/f.jpg"
+                ]
+              }
+            ]
+          },
+          "optionSku": [
+            "SMALL-TURQUOISE",
+            "SMALL-YELLOW",
+            "LARGE-TURQUOISE",
+            "LARGE-YELLOW"
+          ],
+          optionQuantity: [
+            5,
+            5,
+            4,
+            4
+          ]
+        },
+        {...}
+      ]'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">134241</span><span class="w">
+  </span><span class="err">???</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves a specific product.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/products</code></p>
+
+<h3 id="json-fields">JSON fields</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the product</td>
+</tr>
+</tbody></table>
+
+<p>???</p>
+
+          <h1 id="order">Order</h1>
+
+<h2 id="get-all-orders">Get All Orders</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://shoplately.com/api/v1/orders"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">279270</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"purchaseId"</span><span class="p">:</span><span class="w"> </span><span class="mi">114776</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">164817</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dealId"</span><span class="p">:</span><span class="w"> </span><span class="mi">160121</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"groupDealId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8709</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">233129</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"flashShippingId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1421117728</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numPurchase"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.88"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flash"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippingPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.99"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numReturn"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dealIds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"optionIds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ids"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnRequestTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnReceivedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"recommended"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"returnStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">160121</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"groupDealId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8709</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mystery Gift Box ($40 value)"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"limitNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"soldNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"retailPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"salePrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"everyDayPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shippingPrice"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"flatShippingEnabled"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1382738442</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"soldOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gift"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxPurchase"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numOption"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"companyDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"handlingDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"211-7430-160121"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"published"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"backInStock"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numFavorites"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"categoryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"groupStaging"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"publishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1419888237</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastPublishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1419888237</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"flashPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flash"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"leftNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/product/160121/mystery_gift_box_value"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"numPriceOption"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxPurchaseGift"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parentId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"endTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1422460800</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1419868800</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"expired"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"locked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"parentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/bash/jilliciouscharmsandaccessories/8709"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isEveryDayDeal"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isFlash"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isProduct"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isPick"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clickInfo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tags"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"featuredTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"groupDealAddTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1382738442</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sizeChartId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"feedbackRating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"feedbackTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipsInMin"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipsInMax"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"option"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">233129</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"flashDealId"</span><span class="p">:</span><span class="w"> </span><span class="mi">160121</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"limitNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"soldNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"leftNum"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"soldOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1382738442</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mystery Gift Box ($40 value)"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"optionDetailId1"</span><span class="p">:</span><span class="w"> </span><span class="mi">382289</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"optionDetailId2"</span><span class="p">:</span><span class="w"> </span><span class="mi">382292</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"optionDetail1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">382289</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One size"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"flashOptionDetailImgId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"optionDetail2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">382292</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"flashOptionDetailImgId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"companyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">211</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"optionDesc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mystery Gift Box ($40 value)"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves a specific product.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/orders</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>25</td>
+<td>The number of products to be retrieved</td>
+</tr>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>page number</td>
+</tr>
+</tbody></table>
+
+<h2 id="confirm-shipping">Confirm Shipping</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"http://shoplately.com/api/v1/orders/&lt;id&gt;/shipping"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "date": "2015-08-11",
+        "carrier": 3,
+        "service": "First-Class Mail",
+        "trackingNumber": "420591019101969010386840103308"
+      }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">???</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint retrieves a specific product.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v1/orders/&lt;id&gt;/shipping</code></p>
+
+<h3 id="json-parameters">JSON Parameters</h3>
+
+          <h1 id="order-status">Order Status</h1>
+
+<p>Order status:</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>-1</td>
+<td>PURCHASE_UNSETTLED &ndash; unsettled</td>
+</tr>
+<tr>
+<td>0</td>
+<td>PURCHASE_AUTHORIZING &ndash;</td>
+</tr>
+<tr>
+<td>1</td>
+<td>PURCHASE_ACCEPTED &ndash;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PURCHASE_CANCELED &ndash;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PURCHASE_PROCESSING &ndash;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PURCHASE_WAIT_MERCHANT &ndash;</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PURCHASE_DONE = &ndash;</td>
+</tr>
+</tbody></table>
+
+          <h1 id="category">Category</h1>
+
+<h2 id="get-all-categories">Get All Categories</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://shoplately.com/api/v1/categories"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Accessories"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">32357</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accessories"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bags"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">1628</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Backpacks"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags-backpacks"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Handbag Hangers"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags-handbag-hangers"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Handbags"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">636</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags-handbags"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Luggage"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags-luggage"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Make Up Bags"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags-make-up-bags"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small Bags &amp; Clutches"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">631</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags-small-bags-and-clutches"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Totes"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags-totes"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallets"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bags-wallets"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beauty"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">538</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beauty"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Belts"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">276</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"belts"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cold Weather"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cold-weather"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gloves"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gloves"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hair Accessories"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">837</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hair-accessories"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hats"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hats"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jewelry"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">26638</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anklets"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-anklets"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Body Jewelry"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">269</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-body-jewelry"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bracelets"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">6065</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-bracelets"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">53</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Earrings"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">5932</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-earrings"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jewelry Storage"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-jewelry-storage"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Necklaces"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">8604</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-necklaces"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pins"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-pins"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rings"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">3211</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-rings"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Watches"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">2451</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jewelry-watches"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Key Chains"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-chains"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neckwear"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"neckwear"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scarves"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">1026</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scarves"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shoe Accessories"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shoe-accessories"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style Solutions"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"style-solutions"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunglasses"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">279</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sunglasses"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tech Accessories"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">690</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tech-accessories"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tights &amp; Socks"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tights-and-socks"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Umbrellas"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"umbrellas"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">248</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clothing"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clothing"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">254</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denim"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"denim"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">281</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flare"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"denim-flare"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">284</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High-Waisted"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"denim-high-waisted"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">287</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Skinny"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"denim-skinny"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">290</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Straight Leg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"denim-straight-leg"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">251</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dresses"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">718</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dresses"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">293</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Casual"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dresses-casual"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">296</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cocktail"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">166</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dresses-cocktail"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">299</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High-Low"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dresses-high-low"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">302</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maxi"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dresses-maxi"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">257</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jackets &amp; Coats"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">137</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jackets-and-coats"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">305</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blazer"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jackets-and-coats-blazer"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">308</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denim"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jackets-and-coats-denim"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">311</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leather"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jackets-and-coats-leather"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trench"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jackets-and-coats-trench"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">317</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vest"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jackets-and-coats-vest"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">263</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leggings"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leggings"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">260</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pants"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pants"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Casual"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pants-casual"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">323</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trouser"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pants-trouser"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">266</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rompers &amp; Jumpsuits"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rompers-and-jumpsuits"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">269</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shorts"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shorts"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">326</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denim"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shorts-denim"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">329</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High-Waisted"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shorts-high-waisted"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">332</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trouser"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shorts-trouser"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">272</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Skirts"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skirts"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">335</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"High-Low"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skirts-high-low"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">341</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maxi"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skirts-maxi"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">338</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mini"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skirts-mini"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">344</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pencil"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"skirts-pencil"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">275</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sweaters &amp; Knits"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">229</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sweaters-and-knits"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">347</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cardigan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sweaters-and-knits-cardigan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">350</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kimono"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sweaters-and-knits-kimono"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">353</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sweater &amp; Tunic"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">138</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sweaters-and-knits-sweater-and-tunic"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">356</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sweatshirts &amp; Hoodies"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sweaters-and-knits-sweatshirts-and-hoodies"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">278</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tops"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">550</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">359</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blouse"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops-blouse"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">362</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cami"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops-cami"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Casual"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops-casual"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">368</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crop Top"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">74</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops-crop-top"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">371</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dressy"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops-dressy"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">374</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tank Top"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops-tank-top"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">377</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tees"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops-tees"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">380</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tunic"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tops-tunic"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shoes"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">677</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shoes"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Booties"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">58</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"booties"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boots"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boots"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Flats"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flats"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">104</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heels"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">286</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"heels"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sandals"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sandals"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sneakers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sneakers"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">107</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wedges"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numProduct"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"urlRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wedges"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"subCategory"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a full category tree</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/getegories</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
 
           <h1 id="errors">Errors</h1>
 
@@ -266,8 +1561,6 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
