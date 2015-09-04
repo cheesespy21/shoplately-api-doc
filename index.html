@@ -72,10 +72,6 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
           <h1 id="product">Product</h1>
 
-<h2 id="upload-new-product">Upload New Product</h2>
-
-<h2 id="update-product-info">Update Product Info</h2>
-
 <h2 id="get-all-products">Get All Products</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://shoplately.com/api/v1/products"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
@@ -521,6 +517,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <p>???</p>
 
+<h2 id="update-product-info">Update Product Info</h2>
+
           <h1 id="order">Order</h1>
 
 <h2 id="get-all-orders">Get All Orders</h2>
@@ -699,7 +697,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
         "date": "2015-08-11",
         "carrier": 3,
         "service": "First-Class Mail",
-        "trackingNumber": "420591019101969010386840103308"
+        "trackingNumber": "420591019101969010386840103308",
+        "orders": [ 279270, ... ]
       }'</span>
 </code></pre>
 
@@ -719,6 +718,10 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <p><code class="prettyprint">POST /api/v1/orders/&lt;id&gt;/shipping</code></p>
 
 <h3 id="json-parameters">JSON Parameters</h3>
+
+<h2 id="cancel-order">Cancel Order</h2>
+
+<p>refund, order id ???</p>
 
           <h1 id="order-status">Order Status</h1>
 
