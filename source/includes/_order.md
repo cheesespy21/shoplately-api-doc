@@ -166,7 +166,8 @@ curl -XPOST "http://shoplately.com/api/v1/orders/<id>/shipping" \
         "date": "2015-08-11",
         "carrier": 3,
         "service": "First-Class Mail",
-        "trackingNumber": "420591019101969010386840103308"
+        "trackingNumber": "420591019101969010386840103308",
+        "orders": [ 279270, ... ]
       }'
 ```
 
@@ -188,6 +189,5 @@ This endpoint retrieves a specific product.
 
 ### JSON Parameters
 
-
-
+## Cancel Order
 

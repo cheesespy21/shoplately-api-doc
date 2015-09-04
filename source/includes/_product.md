@@ -1,9 +1,5 @@
 # Product
 
-## Upload New Product
-
-## Update Product Info
-
 ## Get All Products
 
 ```shell
@@ -424,3 +420,5 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the product
 ???
+
+## Update Product Info
