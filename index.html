@@ -369,7 +369,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint retrieves all products.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -495,7 +495,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 </span></code></pre>
 
-<p>This endpoint retrieves a specific product.</p>
+<p>This endpoint upload products.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -518,6 +518,68 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <p>???</p>
 
 <h2 id="update-product-info">Update Product Info</h2>
+
+<p>Change price of the products</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /api/v1/products/&lt;ID&gt;</code></p>
+
+<h3 id="fields">fields</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><ID></td>
+<td>The ID of the product</td>
+</tr>
+<tr>
+<td>salePrice</td>
+<td>new sale price</td>
+</tr>
+<tr>
+<td>everyDayPrice</td>
+<td>new every day price</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-option-quantity">Update Option Quantity</h2>
+
+<aside class="notice">We don&rsquo;t update quantity of products but options since quantity is bound to options.</aside>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT /api/v1/options/&lt;ID&gt;</code></p>
+
+<h3 id="fields">fields</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><ID></td>
+<td>The ID of an option to be updated</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>new quantity</td>
+</tr>
+</tbody></table>
+
+<h2 id="out-of-stock">Out of stock</h2>
+
+<p>Change quantity of a product to 0 (including all options)</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /api/v1/products/&lt;ID&gt;/stock</code></p>
 
           <h1 id="order">Order</h1>
 
@@ -1501,6 +1563,16 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h3 id="query-parameters">Query Parameters</h3>
 
+          <h1 id="customer-service">Customer Service</h1>
+
+<h2 id="inbox">Inbox</h2>
+
+<p>Get messages from customer.</p>
+
+<h2 id="respond-to-message">Respond to Message</h2>
+
+<p>Respond to a message.</p>
+
           <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
@@ -1515,7 +1587,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>Bad Request &ndash; Something is wrong with the request</td>
 </tr>
 <tr>
 <td>401</td>
@@ -1523,31 +1595,27 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Forbidden &ndash;</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash;</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>Method Not Allowed &ndash;</td>
 </tr>
 <tr>
 <td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td>Not Acceptable &ndash;</td>
 </tr>
 <tr>
 <td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>Gone &ndash;</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many API</td>
 </tr>
 <tr>
 <td>500</td>
@@ -1555,7 +1623,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
 
