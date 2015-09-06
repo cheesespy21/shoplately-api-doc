@@ -13,6 +13,7 @@ includes:
   - order
   - order_status
   - category
+  - customer_service
   - errors
 
 search: true

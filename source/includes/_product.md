@@ -299,7 +299,7 @@ curl "http://shoplately.com/api/v1/products" \
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all products.
 
 ### HTTP Request
 
@@ -408,7 +408,7 @@ curl -XPOST "http://shoplately.com/api/v1/products" \
 
 ```
 
-This endpoint retrieves a specific product.
+This endpoint upload products.
 
 ### HTTP Request
 
@@ -422,3 +422,40 @@ ID | The ID of the product
 ???
 
 ## Update Product Info
+
+Change price of the products
+
+### HTTP Request
+
+`PUT /api/v1/products/<ID>`
+
+### fields
+Parameter | Description
+--------- | -----------
+<ID> | The ID of the product
+salePrice | new sale price
+everyDayPrice | new every day price
+
+## Update Option Quantity
+
+<aside class="notice">We don't update quantity of products but options since quantity is bound to options.</aside>
+
+### HTTP Request
+
+`PUT /api/v1/options/<ID>`
+
+### fields
+Parameter | Description
+--------- | -----------
+<ID> | The ID of an option to be updated
+quantity | new quantity
+
+
+## Out of stock
+
+Change quantity of a product to 0 (including all options)
+
+### HTTP Request
+
+`DELETE /api/v1/products/<ID>/stock`
+
