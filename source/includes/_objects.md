@@ -82,3 +82,83 @@ optionDetailId | int | Option detail ID
 type | string | Option detail type (e.g. "Size", "Color")
 name | string | Option detail name (e.g. "Small", "Blue")
 images | array | Absolute image URLs
+
+## Purchase Object
+Name | Type | Description
+---- | ---- | -----------
+purchaseId | int | Purchase ID
+user | object | User object
+shippingAddress | object | Shipping address
+details | array | Purchase detail objects
+refunds | array | Refund objects
+subtotal | float | Purchase subtotal (sum of all item prices * quantity)
+shipping | float | Total shipping amount
+tax | float | Total amount of tax collected
+ccPrice | float | Amount captured from the credit card
+creditPrice | float | Amount of SL credit applied toward this purchase
+taxRate | float | Tax rate used
+taxCountyName | string | Tax county name
+taxCountyNumber | int | Tax county number
+isShippingTaxable | bool | If the shipping costs are taxable
+isPending | bool | If the purchase has not been successfully charged yet
+isCanceled | bool | If the purchase has been fully canceled and refunded
+createdTime | int | UNIX timestamp of purchase creation time
+
+## PurchaseDetail Object
+Name | Type | Description
+---- | ---- | -----------
+purchaseDetailId | int | Purchase detail ID
+product | object | Product object
+shipment | object | Shipment object
+quantity | int | Total quantity ordered
+unitPrice | float | Unit price
+price | float | Total price
+tax | float | Amount of tax collected
+isCanceled | bool | If the item(s) have been canceled and refunded
+isShipped | bool | If the item(s) have been shipped
+isDelivered | bool | If the item(s) have been delivered
+quantityReturned | int | Total quantity returned
+
+## Shipment Object
+Name | Type | Description
+---- | ---- | -----------
+shipmentId | int | Shipment ID
+trackingNumber | string | Shipment tracking number
+shipmentProvider | string | Shipment provider
+shipmentType | string | Shipment type
+weight | float | Shipment weight
+volume | float | Shipment volume
+shippedTime | int | UNIX timestamp of ship time
+deliveredTime | int | UNIX timestamp of delivered time
+
+## ShippingAddress Object
+Name | Type | Description
+---- | ---- | -----------
+shippingAddressId | int | Shipping Address ID
+firstName | string | First name
+lastName | string | Last name
+addressLine1 | string | Address line 1
+addressLine2 | string | Address line 2
+city | string | City
+state | string | State (2-letter abbreviation)
+zipCode | string | ZIP code
+zipCodeExt | string | ZIP code extension
+phoneNumber | string | Phone number
+
+## Refund Object
+Name | Type | Description
+---- | ---- | -----------
+refundId | int | Refund ID
+productRefund | float | Product refund amount
+shippingRefund | float | Shipping refund amount
+otherRefund | float | Other refund amount
+totalRefund | float | Total refund amount
+refundTime | int | UNIX timestamp of refund time
+
+## User Object
+Name | Type | Description
+---- | ---- | -----------
+userId | int | User ID
+name | string | Full name
+image | string | Absolute URL of user image
+createdTime | int | UNIX timestamp of user creation time
