@@ -12,7 +12,6 @@ includes:
   - objects
   - product
   - order
-  - order_status
   - category
   - customer_service
   - errors
