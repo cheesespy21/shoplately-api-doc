@@ -390,6 +390,7 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
         "categoryId": 2,
         "regularPrice": 19.99,
         "salePrice": 19.99,
+        "optionDetail2Type": "Color",
         "options": [
           {
             "name": "Small/Blue",
@@ -553,6 +554,7 @@ saleEventId | int | Existing sale event ID
 categoryId | int | Existing category ID
 regularPrice | float | Regular price
 salePrice | float | Discounted on-sale price
+optionDetail2Type | string | Second option detail type
 options | array | (See below.)
 
 ### Option Object
@@ -561,7 +563,7 @@ Name | Type | Description
 name | string | Option name
 sku | string | SKU of option
 quantity | int | Available quantity of this option
-details | object | Map of option detail types to option detail names
+details | object | Map of option detail types to option detail names. Must be "Size" and the type specified in "optionDetail2Type".
 images | array | Absolute image URLs
 
 
