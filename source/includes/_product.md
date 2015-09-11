@@ -356,7 +356,7 @@ curl "https://shoplately.com/api/v1/products/1" \
         }
       ],
       "images": [
-      "https://shoplately.com/images/product/1/option/101/1.jpg",
+        "https://shoplately.com/images/product/1/option/101/1.jpg",
         "https://shoplately.com/images/product/1/option/101/2.jpg"
       ]
     }
@@ -484,21 +484,17 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
         {
           "optionDetailId": 108,
           "type": "Size",
-          "name": "Small",
-          "images": [
-            "https://shoplately.com/images/product/3/option/104/1.jpg",
-            "https://shoplately.com/images/product/3/option/104/2.jpg"
-          ]
+          "name": "Small"
         },
         {
           "optionDetailId": 109,
           "type": "Color",
-          "name": "Blue",
-          "images": [
-            "https://shoplately.com/images/product/3/option/104/3.jpg",
-            "https://shoplately.com/images/product/3/option/104/4.jpg"
-          ]
+          "name": "Blue"
         }
+      ],
+      "images": [
+        "https://shoplately.com/images/product/3/option/104/1.jpg",
+        "https://shoplately.com/images/product/3/option/104/2.jpg"
       ]
     },
     {
@@ -514,21 +510,17 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
         {
           "optionDetailId": 110,
           "type": "Size",
-          "name": "Large",
-          "images": [
-            "https://shoplately.com/images/product/3/option/105/1.jpg",
-            "https://shoplately.com/images/product/3/option/105/2.jpg"
-          ]
+          "name": "Large"
         },
         {
           "optionDetailId": 111,
           "type": "Color",
-          "name": "Blue",
-          "images": [
-            "https://shoplately.com/images/product/3/option/105/3.jpg",
-            "https://shoplately.com/images/product/3/option/105/4.jpg"
-          ]
+          "name": "Blue"
         }
+      ],
+      "images": [
+        "https://shoplately.com/images/product/3/option/105/1.jpg",
+        "https://shoplately.com/images/product/3/option/105/2.jpg"
       ]
     },
   ]

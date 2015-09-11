@@ -75,6 +75,7 @@ sku | string | SKU of option
 details | array | Option detail objects
 quantity | int | Available quantity of this option
 sold | int | Total sold of this option
+images | array | Absolute image URLs
 isSoldOut | bool | If the option is currently sold out
 createdTime | int | UNIX timestamp of option creation time
 soldOutTime | int | UNIX timestamp of option sellout time
@@ -85,7 +86,6 @@ Name | Type | Description
 optionDetailId | int | Option detail ID
 type | string | Option detail type (e.g. "Size", "Color")
 name | string | Option detail name (e.g. "Small", "Blue")
-images | array | Absolute image URLs
 
 ### Category Object
 <aside class="notice">
