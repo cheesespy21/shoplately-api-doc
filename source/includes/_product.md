@@ -380,7 +380,7 @@ productId | int | Product ID
 ```shell
 curl -XPOST "https://shoplately.com/api/v1/products" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
-  -H "Content-"Type": application/json" \
+  -H "Content-Type: application/json" \
   -d '{
         "name": "My Awesome New Product",
         "description": "This is new and awesome",
@@ -401,7 +401,7 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
             },
             "images": [
               "http://www.example.com/products/my-external-image-1.jpg",
-              "http://www.example.com/products/my-external-image-2.jpg",
+              "http://www.example.com/products/my-external-image-2.jpg"
             ]
           },
 
@@ -415,7 +415,7 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
             },
             "images": [
               "http://www.example.com/products/my-external-image-3.jpg",
-              "http://www.example.com/products/my-external-image-4.jpg",
+              "http://www.example.com/products/my-external-image-4.jpg"
             ]
           }
         ]
