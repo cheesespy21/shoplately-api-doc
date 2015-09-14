@@ -152,7 +152,6 @@ curl -XPOST "http://shoplately.com/api/v1/orders/200/shipping" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
   -H "Content-Type: application/json" \
   -d '{
-        "purchaseId": 123,
         "detailIds": [200],
         "shipmentProvider": "USPS",
         "shipmentType": "First-Class Mail",
@@ -195,7 +194,6 @@ purchaseId | int | Purchase ID
 ### Payload
 Name | Type | Description
 ---- | ---- | -----------
-purchaseId | int | Purchase ID
 detailIds | array | Purchase detail IDs
 shipmentProvider | string | Shipment provider ("USPS", "UPS" or "FedEx")
 shipmentType | string | Shipment type
