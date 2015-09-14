@@ -156,6 +156,7 @@ shipmentType | string | Shipment type
 trackingNumber | string | Shipment tracking number
 weight | float | Shipment weight
 volume | float | Shipment volume
+price | float | Total shipping price
 shippedTime | int | UNIX timestamp of ship time
 deliveredTime | int | UNIX timestamp of delivered time
 
