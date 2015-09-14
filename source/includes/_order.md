@@ -151,73 +151,28 @@ curl -XPOST "http://shoplately.com/api/v1/orders/200/shipping" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
   -H "Content-Type: application/json" \
   -d '{
+        "purchaseId": 123,
         "detailIds": [200],
-        "date": 1234567890,
-        "carrier": "USPS",
-        "service": "First-Class Mail",
+        "shippedTime": 1234567890,
+        "shipmentProvider": "USPS",
+        "shipmentType": "First-Class Mail",
         "trackingNumber": "ABCDEFGHIJK0123456789"
       }'
 ```
 
-> The above command returns JSON structured like this:
+> The above command returns JSON structured Shipment object:
 
 ```json
 {
-    "purchaseId": 200,
-    "user": {
-        "userId": 200,
-        "name": "Edward Hyde",
-        "image": null,
-        "createdTime": 1234567890
-    },
-    "shippingAddress": {
-        "firstName": "Edward",
-        "lastName": "Hyde",
-        "addressLine1": "456 Test Ave.",
-        "addressLine2": "",
-        "city": "Los Angeles",
-        "state": "CA",
-        "zipCode": "90001",
-        "zipCodeExt": "",
-        "phoneNumber": "456-789-1011"
-    },
-    "details": [
-        {
-            "purchaseDetailId": 200,
-            "product": { ... },
-            "shipment": {
-                "shipmentId": 200,
-                "trackingNumber": "ABCDEFGHIJK0123456789",
-                "shipmentProvider": "USPS",
-                "shipmentType": "First-Class Mail",
-                "weight": 0,
-                "volume": 0,
-                "shippedTime": 1234567890,
-                "deliveredTime": 0
-            },
-            "quantity": 2,
-            "unitPrice": 20,
-            "price": 40,
-            "tax": 0,
-            "isCanceled": false,
-            "isShipped": true,
-            "isDelivered": false,
-            "quantityReturned": 0
-        }
-    ],
-    "refunds": null,
-    "subtotal": 40,
-    "shipping": 0,
-    "tax": 0,
-    "ccPrice": 57,
-    "creditPrice": 0,
-    "taxRate": 0,
-    "taxCountyName": null,
-    "taxCountyNumber": null,
-    "isShippingTaxable": false,
-    "isPending": false,
-    "isCanceled": false,
-    "createdTime": 1234567890
+    "shipmentId": 456,
+    "trackingNumber": "ABCDEFGHIJK0123456789",
+    "shipmentProvider": "USPS",
+    "shipmentType": "First-Class Mail",
+    "weight": 0,
+    "volume": 0,
+    "shippedTime": 1234567890,
+    "deliveredTime": 0
+
 }
 ```
 
