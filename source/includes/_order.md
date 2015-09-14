@@ -36,11 +36,12 @@ curl "http://shoplately.com/api/v1/orders" \
                 "product": { ... },
                 "shipment": {
                     "shipmentId": 100,
-                    "trackingNumber": "ABCDEFGHIJK0123456789",
                     "shipmentProvider": "USPS",
                     "shipmentType": "First-Class Mail",
+                    "trackingNumber": "ABCDEFGHIJK0123456789",
                     "weight": 0.19,
                     "volume": 70.13,
+                    "price": 5.00,
                     "shippedTime": 1234567890,
                     "deliveredTime": 1234567890
                 },
@@ -153,10 +154,14 @@ curl -XPOST "http://shoplately.com/api/v1/orders/200/shipping" \
   -d '{
         "purchaseId": 123,
         "detailIds": [200],
-        "shippedTime": 1234567890,
         "shipmentProvider": "USPS",
         "shipmentType": "First-Class Mail",
-        "trackingNumber": "ABCDEFGHIJK0123456789"
+        "trackingNumber": "ABCDEFGHIJK0123456789",
+        "weight": 0.19,
+        "volume": 70.13,
+        "price": 5.00,
+        "shippedTime": 1234567890,
+        "deliveredTime": 1234567890
       }'
 ```
 
@@ -165,14 +170,14 @@ curl -XPOST "http://shoplately.com/api/v1/orders/200/shipping" \
 ```json
 {
     "shipmentId": 456,
-    "trackingNumber": "ABCDEFGHIJK0123456789",
     "shipmentProvider": "USPS",
     "shipmentType": "First-Class Mail",
-    "weight": 0,
-    "volume": 0,
+    "trackingNumber": "ABCDEFGHIJK0123456789",
+    "weight": 0.19,
+    "volume": 70.13,
+    "price": 5.00,
     "shippedTime": 1234567890,
-    "deliveredTime": 0
-
+    "deliveredTime": 1234567890
 }
 ```
 
