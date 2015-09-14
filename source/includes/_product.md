@@ -356,7 +356,7 @@ curl "https://shoplately.com/api/v1/products/1" \
         }
       ],
       "images": [
-      "https://shoplately.com/images/product/1/option/101/1.jpg",
+        "https://shoplately.com/images/product/1/option/101/1.jpg",
         "https://shoplately.com/images/product/1/option/101/2.jpg"
       ]
     }
@@ -380,7 +380,7 @@ productId | int | Product ID
 ```shell
 curl -XPOST "https://shoplately.com/api/v1/products" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
-  -H "Content-"Type": application/json" \
+  -H "Content-Type: application/json" \
   -d '{
         "name": "My Awesome New Product",
         "description": "This is new and awesome",
@@ -390,6 +390,7 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
         "categoryId": 2,
         "regularPrice": 19.99,
         "salePrice": 19.99,
+        "optionDetail2Type": "Color",
         "options": [
           {
             "name": "Small/Blue",
@@ -401,7 +402,7 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
             },
             "images": [
               "http://www.example.com/products/my-external-image-1.jpg",
-              "http://www.example.com/products/my-external-image-2.jpg",
+              "http://www.example.com/products/my-external-image-2.jpg"
             ]
           },
 
@@ -415,7 +416,7 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
             },
             "images": [
               "http://www.example.com/products/my-external-image-3.jpg",
-              "http://www.example.com/products/my-external-image-4.jpg",
+              "http://www.example.com/products/my-external-image-4.jpg"
             ]
           }
         ]
@@ -483,21 +484,17 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
         {
           "optionDetailId": 108,
           "type": "Size",
-          "name": "Small",
-          "images": [
-            "https://shoplately.com/images/product/3/option/104/1.jpg",
-            "https://shoplately.com/images/product/3/option/104/2.jpg"
-          ]
+          "name": "Small"
         },
         {
           "optionDetailId": 109,
           "type": "Color",
-          "name": "Blue",
-          "images": [
-            "https://shoplately.com/images/product/3/option/104/3.jpg",
-            "https://shoplately.com/images/product/3/option/104/4.jpg"
-          ]
+          "name": "Blue"
         }
+      ],
+      "images": [
+        "https://shoplately.com/images/product/3/option/104/1.jpg",
+        "https://shoplately.com/images/product/3/option/104/2.jpg"
       ]
     },
     {
@@ -513,21 +510,17 @@ curl -XPOST "https://shoplately.com/api/v1/products" \
         {
           "optionDetailId": 110,
           "type": "Size",
-          "name": "Large",
-          "images": [
-            "https://shoplately.com/images/product/3/option/105/1.jpg",
-            "https://shoplately.com/images/product/3/option/105/2.jpg"
-          ]
+          "name": "Large"
         },
         {
           "optionDetailId": 111,
           "type": "Color",
-          "name": "Blue",
-          "images": [
-            "https://shoplately.com/images/product/3/option/105/3.jpg",
-            "https://shoplately.com/images/product/3/option/105/4.jpg"
-          ]
+          "name": "Blue"
         }
+      ],
+      "images": [
+        "https://shoplately.com/images/product/3/option/105/1.jpg",
+        "https://shoplately.com/images/product/3/option/105/2.jpg"
       ]
     },
   ]
@@ -553,6 +546,7 @@ saleEventId | int | Existing sale event ID
 categoryId | int | Existing category ID
 regularPrice | float | Regular price
 salePrice | float | Discounted on-sale price
+optionDetail2Type | string | Second option detail type
 options | array | (See below.)
 
 ### Option Object
@@ -561,7 +555,7 @@ Name | Type | Description
 name | string | Option name
 sku | string | SKU of option
 quantity | int | Available quantity of this option
-details | object | Map of option detail types to option detail names
+details | object | Map of option detail types to option detail names. Must be "Size" and the type specified in "optionDetail2Type".
 images | array | Absolute image URLs
 
 
