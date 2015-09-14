@@ -390,6 +390,11 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>Total sold of this option</td>
 </tr>
 <tr>
+<td>images</td>
+<td>array</td>
+<td>Absolute image URLs</td>
+</tr>
+<tr>
 <td>isSoldOut</td>
 <td>bool</td>
 <td>If the option is currently sold out</td>
@@ -429,11 +434,6 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>name</td>
 <td>string</td>
 <td>Option detail name (e.g. &ldquo;Small&rdquo;, &ldquo;Blue&rdquo;)</td>
-</tr>
-<tr>
-<td>images</td>
-<td>array</td>
-<td>Absolute image URLs</td>
 </tr>
 </tbody></table>
 
@@ -715,6 +715,11 @@ The top-most parent will have <strong>null</strong> as its parent value.
 <td>volume</td>
 <td>float</td>
 <td>Shipment volume</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>Total shipping price</td>
 </tr>
 <tr>
 <td>shippedTime</td>
@@ -1249,7 +1254,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"https://shoplately.com/images/product/1/option/101/1.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/1/option/101/1.jpg"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"https://shoplately.com/images/product/1/option/101/2.jpg"</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1282,7 +1287,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
 <h2 id="upload-a-new-product">Upload a New Product</h2>
 <pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://shoplately.com/api/v1/products"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-"</span>Type<span class="s2">": application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
         "name": "My Awesome New Product",
         "description": "This is new and awesome",
@@ -1292,6 +1297,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
         "categoryId": 2,
         "regularPrice": 19.99,
         "salePrice": 19.99,
+        "optionDetail2Type": "Color",
         "options": [
           {
             "name": "Small/Blue",
@@ -1303,7 +1309,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
             },
             "images": [
               "http://www.example.com/products/my-external-image-1.jpg",
-              "http://www.example.com/products/my-external-image-2.jpg",
+              "http://www.example.com/products/my-external-image-2.jpg"
             ]
           },
 
@@ -1317,7 +1323,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
             },
             "images": [
               "http://www.example.com/products/my-external-image-3.jpg",
-              "http://www.example.com/products/my-external-image-4.jpg",
+              "http://www.example.com/products/my-external-image-4.jpg"
             ]
           }
         ]
@@ -1385,21 +1391,17 @@ The top-most parent will have <strong>null</strong> as its parent value.
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"optionDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">108</span><span class="p">,</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"https://shoplately.com/images/product/3/option/104/1.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"https://shoplately.com/images/product/3/option/104/2.jpg"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"optionDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">109</span><span class="p">,</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Color"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"https://shoplately.com/images/product/3/option/104/3.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"https://shoplately.com/images/product/3/option/104/4.jpg"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="w">
         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/3/option/104/1.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/3/option/104/2.jpg"</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -1415,21 +1417,17 @@ The top-most parent will have <strong>null</strong> as its parent value.
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"optionDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Large"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"https://shoplately.com/images/product/3/option/105/1.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"https://shoplately.com/images/product/3/option/105/2.jpg"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Large"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nt">"optionDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">,</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Color"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="s2">"https://shoplately.com/images/product/3/option/105/3.jpg"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"https://shoplately.com/images/product/3/option/105/4.jpg"</span><span class="w">
-          </span><span class="p">]</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blue"</span><span class="w">
         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/3/option/105/1.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/3/option/105/2.jpg"</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -1494,6 +1492,11 @@ The top-most parent will have <strong>null</strong> as its parent value.
 <td>Discounted on-sale price</td>
 </tr>
 <tr>
+<td>optionDetail2Type</td>
+<td>string</td>
+<td>Second option detail type</td>
+</tr>
+<tr>
 <td>options</td>
 <td>array</td>
 <td>(See below.)</td>
@@ -1527,7 +1530,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
 <tr>
 <td>details</td>
 <td>object</td>
-<td>Map of option detail types to option detail names</td>
+<td>Map of option detail types to option detail names. Must be &ldquo;Size&rdquo; and the type specified in &ldquo;optionDetail2Type&rdquo;.</td>
 </tr>
 <tr>
 <td>images</td>
