@@ -195,11 +195,17 @@ purchaseId | int | Purchase ID
 ### Payload
 Name | Type | Description
 ---- | ---- | -----------
+purchaseId | int | Purchase ID
 detailIds | array | Purchase detail IDs
-shippedTime | int | UNIX timestamp of ship time
-shipmentProvider | string | "USPS", "UPS" or "FedEx"
+shipmentProvider | string | Shipment provider ("USPS", "UPS" or "FedEx")
 shipmentType | string | Shipment type
 trackingNumber | string | Shipment tracking number
+weight | float | Shipment weight
+volume | float | Shipment volume
+price | float | Total shipping price
+shippedTime | int | UNIX timestamp of ship time
+deliveredTime | int | UNIX timestamp of delivered time
+
 
 
 ## Cancel Order
