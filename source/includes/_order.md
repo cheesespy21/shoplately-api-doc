@@ -54,7 +54,16 @@ curl "http://shoplately.com/api/v1/orders" \
                 "quantityReturned": 0
             }
         ],
-        "refunds": null,
+        "refunds": [
+            {
+                "refundId": 8124,
+                "productRefund": "18.99",
+                "shippingRefund": "0.00",
+                "otherRefund": "0.00",
+                "totalRefund": "18.99",
+                "refundTime": 1442216740
+            }
+        ],
         "subtotal": 50,
         "shipping": 5,
         "tax": 4,
@@ -102,7 +111,7 @@ curl "http://shoplately.com/api/v1/orders" \
                 "quantityReturned": 0
             }
         ],
-        "refunds": null,
+        "refunds": [],
         "subtotal": 40,
         "shipping": 0,
         "tax": 0,
