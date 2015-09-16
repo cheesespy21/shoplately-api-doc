@@ -1717,7 +1717,16 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
                 </span><span class="nt">"quantityReturned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"refunds"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"refunds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"refundId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8124</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"productRefund"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18.99"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"shippingRefund"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"otherRefund"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"totalRefund"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18.99"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"refundTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1442216740</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipping"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
         </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
@@ -1765,7 +1774,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
                 </span><span class="nt">"quantityReturned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"refunds"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"refunds"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
         </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
         </span><span class="nt">"shipping"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -1824,73 +1833,28 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
+        "purchaseId": 123,
         "detailIds": [200],
-        "date": 1234567890,
-        "carrier": "USPS",
-        "service": "First-Class Mail",
+        "shippedTime": 1234567890,
+        "shipmentProvider": "USPS",
+        "shipmentType": "First-Class Mail",
         "trackingNumber": "ABCDEFGHIJK0123456789"
       }'</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured Shipment object:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"purchaseId"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edward Hyde"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"shippingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Edward"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hyde"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456 Test Ave."</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Los Angeles"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90001"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"zipCodeExt"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456-789-1011"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"purchaseDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
-            </span><span class="nt">"shipment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"shipmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"trackingNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJK0123456789"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"shipmentProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First-Class Mail"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"shippedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"deliveredTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"isCanceled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"isShipped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"isDelivered"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"quantityReturned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"refunds"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"shipping"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"ccPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"creditPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"taxRate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"taxCountyName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"taxCountyNumber"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"isShippingTaxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"isPending"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"isCanceled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+    </span><span class="nt">"shipmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trackingNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJK0123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First-Class Mail"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"shippedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deliveredTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
