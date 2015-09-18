@@ -144,7 +144,6 @@ curl "https://shoplately.com/api/v1/messages" \
 
 Parameter | Default | Description
 --------- | ------- | -----------
-deleted | false | Include deleted messages
 page | 1 | Page number
 limit | 25 | The number of products to be retrieved
 

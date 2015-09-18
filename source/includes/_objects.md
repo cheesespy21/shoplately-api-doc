@@ -165,7 +165,6 @@ Name | Type | Description
 ---- | ---- | -----------
 refundId | int | Refund ID
 productRefund | float | Product refund amount
-shippingRefund | float | Shipping refund amount
 otherRefund | float | Other refund amount
 totalRefund | float | Total refund amount
 refundTime | int | UNIX timestamp of refund time

@@ -36,11 +36,12 @@ curl "http://shoplately.com/api/v1/orders" \
                 "product": { ... },
                 "shipment": {
                     "shipmentId": 100,
-                    "trackingNumber": "ABCDEFGHIJK0123456789",
                     "shipmentProvider": "USPS",
                     "shipmentType": "First-Class Mail",
+                    "trackingNumber": "ABCDEFGHIJK0123456789",
                     "weight": 0.19,
                     "volume": 70.13,
+                    "price": 5.00,
                     "shippedTime": 1234567890,
                     "deliveredTime": 1234567890
                 },
@@ -151,12 +152,15 @@ curl -XPOST "http://shoplately.com/api/v1/orders/200/shipping" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
   -H "Content-Type: application/json" \
   -d '{
-        "purchaseId": 123,
         "detailIds": [200],
-        "shippedTime": 1234567890,
         "shipmentProvider": "USPS",
         "shipmentType": "First-Class Mail",
-        "trackingNumber": "ABCDEFGHIJK0123456789"
+        "trackingNumber": "ABCDEFGHIJK0123456789",
+        "weight": 0.19,
+        "volume": 70.13,
+        "price": 5.00,
+        "shippedTime": 1234567890,
+        "deliveredTime": 1234567890
       }'
 ```
 
@@ -165,14 +169,14 @@ curl -XPOST "http://shoplately.com/api/v1/orders/200/shipping" \
 ```json
 {
     "shipmentId": 456,
-    "trackingNumber": "ABCDEFGHIJK0123456789",
     "shipmentProvider": "USPS",
     "shipmentType": "First-Class Mail",
-    "weight": 0,
-    "volume": 0,
+    "trackingNumber": "ABCDEFGHIJK0123456789",
+    "weight": 0.19,
+    "volume": 70.13,
+    "price": 5.00,
     "shippedTime": 1234567890,
-    "deliveredTime": 0
-
+    "deliveredTime": 1234567890
 }
 ```
 
@@ -191,10 +195,15 @@ purchaseId | int | Purchase ID
 Name | Type | Description
 ---- | ---- | -----------
 detailIds | array | Purchase detail IDs
-shippedTime | int | UNIX timestamp of ship time
-shipmentProvider | string | "USPS", "UPS" or "FedEx"
+shipmentProvider | string | Shipment provider ("USPS", "UPS" or "FedEx")
 shipmentType | string | Shipment type
 trackingNumber | string | Shipment tracking number
+weight | float | Shipment weight
+volume | float | Shipment volume
+price | float | Total shipping price
+shippedTime | int | UNIX timestamp of ship time
+deliveredTime | int | UNIX timestamp of delivered time
+
 
 
 ## Cancel Order
