@@ -753,11 +753,6 @@ The top-most parent will have <strong>null</strong> as its parent value.
 <td>Product refund amount</td>
 </tr>
 <tr>
-<td>shippingRefund</td>
-<td>float</td>
-<td>Shipping refund amount</td>
-</tr>
-<tr>
 <td>otherRefund</td>
 <td>float</td>
 <td>Other refund amount</td>
@@ -1699,11 +1694,12 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
                 </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
                 </span><span class="nt">"shipment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"shipmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"trackingNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJK0123456789"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"shipmentProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First-Class Mail"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"trackingNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJK0123456789"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.13</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.00</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"shippedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"deliveredTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
                 </span><span class="p">},</span><span class="w">
@@ -1833,12 +1829,15 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
-        "purchaseId": 123,
         "detailIds": [200],
-        "shippedTime": 1234567890,
         "shipmentProvider": "USPS",
         "shipmentType": "First-Class Mail",
-        "trackingNumber": "ABCDEFGHIJK0123456789"
+        "trackingNumber": "ABCDEFGHIJK0123456789",
+        "weight": 0.19,
+        "volume": 70.13,
+        "price": 5.00,
+        "shippedTime": 1234567890,
+        "deliveredTime": 1234567890
       }'</span>
 </code></pre>
 
@@ -1847,14 +1846,14 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"shipmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"trackingNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJK0123456789"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First-Class Mail"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trackingNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJK0123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.13</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.00</span><span class="p">,</span><span class="w">
     </span><span class="nt">"shippedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"deliveredTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-
+    </span><span class="nt">"deliveredTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1895,14 +1894,9 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 <td>Purchase detail IDs</td>
 </tr>
 <tr>
-<td>shippedTime</td>
-<td>int</td>
-<td>UNIX timestamp of ship time</td>
-</tr>
-<tr>
 <td>shipmentProvider</td>
 <td>string</td>
-<td>&ldquo;USPS&rdquo;, &ldquo;UPS&rdquo; or &ldquo;FedEx&rdquo;</td>
+<td>Shipment provider (&ldquo;USPS&rdquo;, &ldquo;UPS&rdquo; or &ldquo;FedEx&rdquo;)</td>
 </tr>
 <tr>
 <td>shipmentType</td>
@@ -1913,6 +1907,31 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 <td>trackingNumber</td>
 <td>string</td>
 <td>Shipment tracking number</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>float</td>
+<td>Shipment weight</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>float</td>
+<td>Shipment volume</td>
+</tr>
+<tr>
+<td>price</td>
+<td>float</td>
+<td>Total shipping price</td>
+</tr>
+<tr>
+<td>shippedTime</td>
+<td>int</td>
+<td>UNIX timestamp of ship time</td>
+</tr>
+<tr>
+<td>deliveredTime</td>
+<td>int</td>
+<td>UNIX timestamp of delivered time</td>
 </tr>
 </tbody></table>
 
@@ -2211,11 +2230,6 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>deleted</td>
-<td>false</td>
-<td>Include deleted messages</td>
-</tr>
 <tr>
 <td>page</td>
 <td>1</td>
