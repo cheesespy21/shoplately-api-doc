@@ -877,7 +877,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
           <h1 id="product">Product</h1>
 
 <h2 id="get-all-products">Get All Products</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://shoplately.com/api/v1/products"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.lately.com/v1/products"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
@@ -1139,7 +1139,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
 </tbody></table>
 
 <h2 id="get-a-specific-product">Get a Specific Product</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://shoplately.com/api/v1/products/1"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.lately.com/v1/products/1"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
@@ -1280,7 +1280,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
 </tbody></table>
 
 <h2 id="upload-a-new-product">Upload a New Product</h2>
-<pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://shoplately.com/api/v1/products"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://api.lately.com/v1/products"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1661,7 +1661,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
           <h1 id="order">Order</h1>
 
 <h2 id="get-all-orders">Get All Orders</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://shoplately.com/api/v1/orders"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"http://api.lately.com/v1/orders"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
@@ -1825,7 +1825,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tbody></table>
 
 <h2 id="confirm-shipping">Confirm Shipping</h2>
-<pre class="highlight shell"><code>curl -XPOST <span class="s2">"http://shoplately.com/api/v1/orders/200/shipping"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"http://api.lately.com/v1/orders/200/shipping"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -1936,7 +1936,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tbody></table>
 
 <h2 id="cancel-order">Cancel Order</h2>
-<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"http://shoplately.com/api/v1/orders/300"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"http://api.lately.com/v1/orders/300"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
@@ -2016,7 +2016,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
           <h1 id="category">Category</h1>
 
 <h2 id="get-all-categories">Get All Categories</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://shoplately.com/api/v1/categories"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"http://api.lately.com/v1/categories"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
@@ -2084,7 +2084,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
           <h1 id="customer-service">Customer Service</h1>
 
 <h2 id="get-inbox">Get Inbox</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"https://shoplately.com/api/v1/messages"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl <span class="s2">"https://api.lately.com/v1/messages"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
 </code></pre>
 
@@ -2243,7 +2243,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tbody></table>
 
 <h2 id="create-thread">Create Thread</h2>
-<pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://shoplately.com/api/v1/messages"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://api.lately.com/v1/messages"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
   -d <span class="s1">'{
     "toUserId": 100,
@@ -2295,7 +2295,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tbody></table>
 
 <h2 id="respond-to-thread">Respond to Thread</h2>
-<pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://shoplately.com/api/v1/messages/100"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://api.lately.com/v1/messages/100"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
   -d <span class="s1">'{
     "message": "This is a reply!"
