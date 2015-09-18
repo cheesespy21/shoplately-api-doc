@@ -3,7 +3,7 @@
 ## Get All Orders
 
 ```shell
-curl "http://shoplately.com/api/v1/orders" \
+curl "http://api.lately.com/v1/orders" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
 ```
 
@@ -148,7 +148,7 @@ limit | 25 | The number of orders to be retrieved
 ## Confirm Shipping
 
 ```shell
-curl -XPOST "http://shoplately.com/api/v1/orders/200/shipping" \
+curl -XPOST "http://api.lately.com/v1/orders/200/shipping" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
   -H "Content-Type: application/json" \
   -d '{
@@ -209,7 +209,7 @@ deliveredTime | int | UNIX timestamp of delivered time
 ## Cancel Order
 
 ```shell
-curl -XDELETE "http://shoplately.com/api/v1/orders/300" \
+curl -XDELETE "http://api.lately.com/v1/orders/300" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
 ```
 

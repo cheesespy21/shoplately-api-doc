@@ -3,7 +3,7 @@
 ## Get Inbox
 
 ```shell
-curl "https://shoplately.com/api/v1/messages" \
+curl "https://api.lately.com/v1/messages" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
 ```
 
@@ -150,7 +150,7 @@ limit | 25 | The number of products to be retrieved
 ## Create Thread
 
 ```shell
-curl -XPOST "https://shoplately.com/api/v1/messages" \
+curl -XPOST "https://api.lately.com/v1/messages" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
   -d '{
     "toUserId": 100,
@@ -180,7 +180,7 @@ message | string | Message body
 ## Respond to Thread
 
 ```shell
-curl -XPOST "https://shoplately.com/api/v1/messages/100" \
+curl -XPOST "https://api.lately.com/v1/messages/100" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
   -d '{
     "message": "This is a reply!"

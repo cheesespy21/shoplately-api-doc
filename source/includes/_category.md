@@ -3,7 +3,7 @@
 ## Get All Categories
 
 ```shell
-curl "http://shoplately.com/api/v1/categories" \
+curl "http://api.lately.com/v1/categories" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
 ```
 

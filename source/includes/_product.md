@@ -3,7 +3,7 @@
 ## Get All Products
 
 ```shell
-curl "https://shoplately.com/api/v1/products" \
+curl "https://api.lately.com/v1/products" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
 ```
 
@@ -246,7 +246,7 @@ limit | 25 | The number of products to be retrieved
 ## Get a Specific Product
 
 ```shell
-curl "https://shoplately.com/api/v1/products/1" \
+curl "https://api.lately.com/v1/products/1" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
 ```
 
@@ -378,7 +378,7 @@ productId | int | Product ID
 ## Upload a New Product
 
 ```shell
-curl -XPOST "https://shoplately.com/api/v1/products" \
+curl -XPOST "https://api.lately.com/v1/products" \
   -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
   -H "Content-Type: application/json" \
   -d '{
