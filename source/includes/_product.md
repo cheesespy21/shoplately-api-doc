@@ -479,7 +479,6 @@ curl -XPOST "https://api.lately.com/v1/products" \
   "options": [
     {
       "optionId": 104,
-      "name": "Small/Blue",
       "sku": "MY-OWN-SKU-1",
       "quantity": 20,
       "sold": 0,
@@ -505,7 +504,6 @@ curl -XPOST "https://api.lately.com/v1/products" \
     },
     {
       "optionId": 105,
-      "name": "Large/Blue",
       "sku": "MY-OWN-SKU-2",
       "quantity": 20,
       "sold": 0,
@@ -558,7 +556,6 @@ options | array | (See below.)
 ### Option Object
 Name | Type | Description
 ---- | ---- | -----------
-name | string | Option name
 sku | string | SKU of option
 quantity | int | Available quantity of this option
 details | object | Map of option detail types to option detail names. Must be "Size" and the type specified in "optionDetail2Type".
