@@ -46,7 +46,7 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p><a href="http://shoplately.com">Shoplately</a> API documentation</p>
+<p><a href="http://shoplately.com">Lately</a> API documentation</p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -62,7 +62,7 @@ curl <span class="s2">"api_endpoint_here"</span>
 <p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
 </blockquote>
 
-<p>Shoplately expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Lately expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
 <p><code class="prettyprint">X-SHOPLATELY-API-KEY: meowmeowmeow</code></p>
 
@@ -1105,7 +1105,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/products</code></p>
+<p><code class="prettyprint">GET /v1/products</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1137,6 +1137,10 @@ The top-most parent will have <strong>null</strong> as its parent value.
 <td>The number of products to be retrieved</td>
 </tr>
 </tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns an array of Product objects.</p>
 
 <h2 id="get-a-specific-product">Get a Specific Product</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"https://api.lately.com/v1/products/1"</span> <span class="se">\</span>
@@ -1261,7 +1265,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/products/&lt;productId&gt;</code></p>
+<p><code class="prettyprint">GET /v1/products/&lt;productId&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1278,6 +1282,10 @@ The top-most parent will have <strong>null</strong> as its parent value.
 <td>Product ID</td>
 </tr>
 </tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Product object.</p>
 
 <h2 id="upload-a-new-product">Upload a New Product</h2>
 <pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://api.lately.com/v1/products"</span> <span class="se">\</span>
@@ -1435,7 +1443,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/products</code></p>
+<p><code class="prettyprint">POST /v1/products</code></p>
 
 <h3 id="payload">Payload</h3>
 
@@ -1534,7 +1542,55 @@ The top-most parent will have <strong>null</strong> as its parent value.
 </tr>
 </tbody></table>
 
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Product object.</p>
+
 <h2 id="update-product-info">Update Product Info</h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"https://api.lately.com/v1/products/100"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "name": "My Awesome Updated Product",
+        "description": "This is new and updated",
+        "material": "100% Updated",
+        "measurement": "Tiny, but updated.",
+        "saleEventId": null,
+        "categoryId": 2,
+        "regularPrice": 19.99,
+        "salePrice": 19.99
+      }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Awesome Updated Product"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is new and updated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"material"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100% Updated"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tiny, but updated."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/100/my-awesome-updated-product"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isDeleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isOnSale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isPublished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isSoldOut"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"publishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lastPublishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w"> 
+  </span><span class="nt">"saleEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>This endpoint facilitates the updating of product information.</p>
 
@@ -1543,7 +1599,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT /api/v1/products/&lt;productId&gt;</code></p>
+<p><code class="prettyprint">PUT /v1/products/&lt;productId&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1612,11 +1668,79 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tr>
 </tbody></table>
 
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Product object.</p>
+
 <h2 id="update-product-quantity">Update Product Quantity <a name="update-product-quantity"></a></h2>
+<pre class="highlight shell"><code>curl -XPUT <span class="s2">"https://api.lately.com/v1/options/450"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "quantity": 100
+      }'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some Product"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a description"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"material"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100% Cotton"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/300/some-product"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isDeleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isOnSale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isPublished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isSoldOut"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"publishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lastPublishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w"> 
+  </span><span class="nt">"saleEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One Size Fits All"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-OWN-SKU-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isSoldOut"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"soldOutTime"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"optionDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">451</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One Size Fits All"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"optionDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">452</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/300/option/450/1.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/300/option/450/2.jpg"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">PUT /api/v1/options/&lt;optionId&gt;</code></p>
+<p><code class="prettyprint">PUT /v1/options/&lt;optionId&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1650,13 +1774,82 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tr>
 </tbody></table>
 
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Product object.</p>
+
 <h2 id="out-of-stock">Out of stock</h2>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"https://api.lately.com/v1/options/450"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"productId"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some Product"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a description"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"material"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100% Cotton"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"measurement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Small"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/300/some-product"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isDeleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isOnSale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isPublished"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"isSoldOut"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"publishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lastPublishedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w"> 
+  </span><span class="nt">"saleEvent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"optionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">450</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One Size Fits All"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-OWN-SKU-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isSoldOut"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"soldOutTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"optionDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">451</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Size"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One Size Fits All"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"optionDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">452</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/300/option/450/1.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"https://shoplately.com/images/product/300/option/450/2.jpg"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>This endpoint changes the quantity of a product to 0 (including all options).</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE /api/v1/products/&lt;productId&gt;/stock</code></p>
+<p><code class="prettyprint">DELETE /v1/products/&lt;productId&gt;/stock</code></p>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Product object.</p>
 
           <h1 id="order">Order</h1>
 
@@ -1791,7 +1984,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/orders</code></p>
+<p><code class="prettyprint">GET /v1/orders</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1823,6 +2016,113 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 <td>The number of orders to be retrieved</td>
 </tr>
 </tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns an array of Purchase objects.</p>
+
+<h2 id="get-a-specific-order">Get a Specific Order</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://api.lately.com/v1/order/100"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"purchaseId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"userId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Henry Jekyll"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"shippingAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Henry"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jekyll"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Test St."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apt. 99"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Jose"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95126"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"zipCodeExt"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-456-7890"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"purchaseDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="nt">"shipment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nt">"shipmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"shipmentProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"shipmentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"First-Class Mail"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"trackingNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABCDEFGHIJK0123456789"</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.13</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.00</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"shippedTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+                  </span><span class="nt">"deliveredTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"isCanceled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"isShipped"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"isDelivered"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"quantityReturned"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"refunds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="nt">"refundId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8124</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"productRefund"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18.99"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"shippingRefund"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"otherRefund"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"totalRefund"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18.99"</span><span class="p">,</span><span class="w">
+              </span><span class="nt">"refundTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1442216740</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"shipping"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ccPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">57</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"creditPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"taxRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.08</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"taxCountyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SANTA CLARA"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"taxCountyNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isShippingTaxable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isPending"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isCanceled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific order.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /v1/orders/&lt;purchaseId&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>purchaseId</td>
+<td>int</td>
+<td>Purchase ID</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Purchase object.</p>
 
 <h2 id="confirm-shipping">Confirm Shipping</h2>
 <pre class="highlight shell"><code>curl -XPOST <span class="s2">"http://api.lately.com/v1/orders/200/shipping"</span> <span class="se">\</span>
@@ -1861,7 +2161,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/orders/&lt;purchaseId&gt;/shipping</code></p>
+<p><code class="prettyprint">POST /v1/orders/&lt;purchaseId&gt;/shipping</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1935,6 +2235,10 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tr>
 </tbody></table>
 
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Shipment object.</p>
+
 <h2 id="cancel-order">Cancel Order</h2>
 <pre class="highlight shell"><code>curl -XDELETE <span class="s2">"http://api.lately.com/v1/orders/300"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
@@ -1995,7 +2299,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">DELETE /api/v1/orders/&lt;purchaseId&gt;</code></p>
+<p><code class="prettyprint">DELETE /v1/orders/&lt;purchaseId&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -2012,6 +2316,10 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 <td>Purchase ID</td>
 </tr>
 </tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Purchase object.</p>
 
           <h1 id="category">Category</h1>
 
@@ -2063,7 +2371,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/categories</code></p>
+<p><code class="prettyprint">GET /v1/categories</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2080,6 +2388,10 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 <td>Maximum number of child categories to traverse from the root level</td>
 </tr>
 </tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns an array of Category objects.</p>
 
           <h1 id="customer-service">Customer Service</h1>
 
@@ -2219,7 +2531,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/messages</code></p>
+<p><code class="prettyprint">GET /v1/messages</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2242,6 +2554,10 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tr>
 </tbody></table>
 
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns an array of Thread objects.</p>
+
 <h2 id="create-thread">Create Thread</h2>
 <pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://api.lately.com/v1/messages"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
@@ -2261,7 +2577,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/messages</code></p>
+<p><code class="prettyprint">POST /v1/messages</code></p>
 
 <h3 id="payload">Payload</h3>
 
@@ -2294,6 +2610,10 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 </tr>
 </tbody></table>
 
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Thread object.</p>
+
 <h2 id="respond-to-thread">Respond to Thread</h2>
 <pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://api.lately.com/v1/messages/100"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span>
@@ -2310,7 +2630,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST /api/v1/messages/&lt;threadId&gt;</code></p>
+<p><code class="prettyprint">POST /v1/messages/&lt;threadId&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -2343,6 +2663,10 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 <td>Message body</td>
 </tr>
 </tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Thread object.</p>
 
           <h1 id="errors">Errors</h1>
 
