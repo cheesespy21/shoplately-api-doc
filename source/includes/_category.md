@@ -12,33 +12,39 @@ curl "http://api.lately.com/v1/categories" \
 ```json
 {
     "categoryId": 1,
-    "name": "All Products",
+    "name": "All",
     "url": "https://shoplately.com",
+    "parentId": 0,
     "children": [
         {
-            "categoryId": 2,
-            "name": "Awesome Products",
-            "url": "https://shoplately.com/category/awesome-products",
+            "categoryId": 18,
+            "name": "Accessories",
+            "url": "https://shoplately.com/shop/accessories",
+            "parentId": 1,
             "children": [
-            	{
-                	"categoryId": 3,
-                	"name": "Moderately Awesome Products",
-                	"url": "https://shoplately.com/category/moderately-awesome-products",
-                	"children": null
-                },
                 {
-                	"categoryId": 4,
-                	"name": "Super Awesome Products",
-                	"url": "https://shoplately.com/category/super-awesome-products",
-                	"children": null
+                    "categoryId": 20,
+                    "name": "Bags",
+                    "url": "https://shoplately.com/shop/bags",
+                    "parentId": 18,
+                    "children": [
+                        {
+                            "categoryId": 41,
+                            "name": "Backpacks",
+                            "url": "https://shoplately.com/shop/bags-backpacks",
+                            "parentId": 20,
+                            "children": []
+                        },
+                        {
+                            "categoryId": 56,
+                            "name": "Handbag Hangers",
+                            "url": "https://shoplately.com/shop/bags-handbag-hangers",
+                            "parentId": 20,
+                            "children": []
+                        }
+                    ]
                 }
             ]
-        },
-        {
-            "categoryId": 5,
-            "name": "Example Products",
-            "url": "https://shoplately.com/category/example-products",
-            "children": null
         }
     ]
 }

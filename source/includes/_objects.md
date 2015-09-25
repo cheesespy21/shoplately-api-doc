@@ -97,7 +97,8 @@ Name | Type | Description
 categoryId | int | Category ID
 name | string | Category name
 url | string | Absolute URL of the category page
-parent | object | Parent category object
+parentId | int | id of Parent category
+children | Category[] | array of children categories
 
 ### SaleEvent Object
 Name | Type | Description
