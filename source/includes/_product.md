@@ -231,7 +231,7 @@ This endpoint retrieves all products.
 
 ### HTTP Request
 
-`GET /api/v1/products`
+`GET /v1/products`
 
 ### Query Parameters
 
@@ -241,6 +241,9 @@ unpublished | false | Include unpublished products
 deleted | false | Include deleted products
 page | 1 | Page number
 limit | 25 | The number of products to be retrieved
+
+### Returns
+This endpoint returns an array of Product objects.
 
 
 ## Get a Specific Product
@@ -368,12 +371,15 @@ This endpoint retrieves a specific product.
 
 ### HTTP Request
 
-`GET /api/v1/products/<productId>`
+`GET /v1/products/<productId>`
 
 ### URL Parameters
 Name | Type | Description
 ---- | ---- | -----------
 productId | int | Product ID
+
+### Returns
+This endpoint returns a single Product object.
 
 ## Upload a New Product
 
@@ -533,7 +539,7 @@ The `Company` is automatically set based on the company associated with the user
 
 ### HTTP Request
 
-`POST /api/v1/products`
+`POST /v1/products`
 
 ### Payload
 Name | Type | Description
@@ -558,8 +564,56 @@ quantity | int | Available quantity of this option
 details | object | Map of option detail types to option detail names. Must be "Size" and the type specified in "optionDetail2Type".
 images | array | Absolute image URLs
 
+### Returns
+This endpoint returns a single Product object.
+
 
 ## Update Product Info
+```shell
+curl -XPUT "https://api.lately.com/v1/products/100" \
+  -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "My Awesome Updated Product",
+        "description": "This is new and updated",
+        "material": "100% Updated",
+        "measurement": "Tiny, but updated.",
+        "saleEventId": null,
+        "categoryId": 2,
+        "regularPrice": 19.99,
+        "salePrice": 19.99
+      }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "productId": 100,
+  "name": "My Awesome Updated Product",
+  "description": "This is new and updated",
+  "material": "100% Updated",
+  "measurement": "Tiny, but updated.",
+  "quantity": 10,
+  "sold": 5,
+  "price": 19.99,
+  "regularPrice": 19.99,
+  "views": 100,
+  "url": "https://shoplately.com/product/100/my-awesome-updated-product",
+  "isBackInStock": false,
+  "isDeleted": false,
+  "isOnSale": false,
+  "isPublished": true,
+  "isSoldOut": false,
+  "createdTime": 1234567890,
+  "publishedTime": 1234567890,
+  "lastPublishedTime": 1234567890,
+  "company": { ... }, 
+  "saleEvent": null,
+  "category": { ... },
+  "options": [ ... ]
+}
+```
 
 This endpoint facilitates the updating of product information.
 
@@ -568,7 +622,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 ### HTTP Request
 
-`PUT /api/v1/products/<productId>`
+`PUT /v1/products/<productId>`
 
 ### URL Parameters
 Name | Type | Description
@@ -587,12 +641,81 @@ categoryId | int | Existing category ID
 regularPrice | float | Regular price
 salePrice | float | Discounted on-sale price
 
+### Returns
+This endpoint returns a single Product object.
+
 
 ## Update Product Quantity <a name="update-product-quantity"></a>
 
+```shell
+curl -XPUT "https://api.lately.com/v1/options/450" \
+  -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "quantity": 100
+      }'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "productId": 300,
+  "name": "Some Product",
+  "description": "This is a description",
+  "material": "100% Cotton",
+  "measurement": "Small",
+  "quantity": 100,
+  "sold": 5,
+  "price": 19.99,
+  "regularPrice": 19.99,
+  "views": 100,
+  "url": "https://shoplately.com/product/300/some-product",
+  "isBackInStock": false,
+  "isDeleted": false,
+  "isOnSale": false,
+  "isPublished": true,
+  "isSoldOut": false,
+  "createdTime": 1234567890,
+  "publishedTime": 1234567890,
+  "lastPublishedTime": 1234567890,
+  "company": { ... }, 
+  "saleEvent": null,
+  "category": { ... },
+  "options": [
+    {
+      "optionId": 450,
+      "name": "One Size Fits All",
+      "sku": "MY-OWN-SKU-1",
+      "quantity": 100,
+      "sold": 5,
+      "isSoldOut": false,
+      "createdTime": 1234567890,
+      "soldOutTime": null,
+      "details": [
+        {
+          "optionDetailId": 451,
+          "type": "Size",
+          "name": "One Size Fits All"
+        },
+        {
+          "optionDetailId": 452,
+          "type": "Default",
+          "name": "Default"
+        }
+      ],
+      "images": [
+        "https://shoplately.com/images/product/300/option/450/1.jpg",
+        "https://shoplately.com/images/product/300/option/450/2.jpg"
+      ]
+    }
+  ]
+}
+```
+
 ### HTTP Request
 
-`PUT /api/v1/options/<optionId>`
+`PUT /v1/options/<optionId>`
 
 ### URL Parameters
 Name | Type | Description
@@ -604,11 +727,80 @@ Name | Type | Description
 ---- | ---- | -----------
 quantity | int | Available quantity of this option
 
+### Returns
+This endpoint returns a single Product object.
+
+
 ## Out of stock
+
+```shell
+curl -XDELETE "https://api.lately.com/v1/options/450" \
+  -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
+  -H "Content-Type: application/json"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "productId": 300,
+  "name": "Some Product",
+  "description": "This is a description",
+  "material": "100% Cotton",
+  "measurement": "Small",
+  "quantity": 0,
+  "sold": 5,
+  "price": 19.99,
+  "regularPrice": 19.99,
+  "views": 100,
+  "url": "https://shoplately.com/product/300/some-product",
+  "isBackInStock": false,
+  "isDeleted": false,
+  "isOnSale": false,
+  "isPublished": true,
+  "isSoldOut": true,
+  "createdTime": 1234567890,
+  "publishedTime": 1234567890,
+  "lastPublishedTime": 1234567890,
+  "company": { ... }, 
+  "saleEvent": null,
+  "category": { ... },
+  "options": [
+    {
+      "optionId": 450,
+      "name": "One Size Fits All",
+      "sku": "MY-OWN-SKU-1",
+      "quantity": 0,
+      "sold": 5,
+      "isSoldOut": true,
+      "createdTime": 1234567890,
+      "soldOutTime": 1234567890,
+      "details": [
+        {
+          "optionDetailId": 451,
+          "type": "Size",
+          "name": "One Size Fits All"
+        },
+        {
+          "optionDetailId": 452,
+          "type": "Default",
+          "name": "Default"
+        }
+      ],
+      "images": [
+        "https://shoplately.com/images/product/300/option/450/1.jpg",
+        "https://shoplately.com/images/product/300/option/450/2.jpg"
+      ]
+    }
+  ]
+}
+```
 
 This endpoint changes the quantity of a product to 0 (including all options).
 
 ### HTTP Request
 
-`DELETE /api/v1/products/<productId>/stock`
+`DELETE /v1/products/<productId>/stock`
 
+### Returns
+This endpoint returns a single Product object.

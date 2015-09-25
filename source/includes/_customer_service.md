@@ -138,7 +138,7 @@ curl "https://api.lately.com/v1/messages" \
 
 ### HTTP Request
 
-`GET /api/v1/messages`
+`GET /v1/messages`
 
 ### Query Parameters
 
@@ -146,6 +146,9 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 1 | Page number
 limit | 25 | The number of products to be retrieved
+
+### Returns
+This endpoint returns an array of Thread objects.
 
 ## Create Thread
 
@@ -166,7 +169,7 @@ This endpoint allows a company to create a thread to a user.
 
 ### HTTP Request
 
-`POST /api/v1/messages`
+`POST /v1/messages`
 
 ### Payload
 Name | Type | Description
@@ -175,6 +178,9 @@ toUserId | int | Recipient user ID
 subject | string | Message subject
 purchaseId | int | Purchase ID
 message | string | Message body
+
+### Returns
+This endpoint returns a single Thread object.
 
 
 ## Respond to Thread
@@ -193,7 +199,7 @@ This endpoint allows a company to reply to a thread.
 
 ### HTTP Request
 
-`POST /api/v1/messages/<threadId>`
+`POST /v1/messages/<threadId>`
 
 ### URL Parameters
 Name | Type | Description
@@ -204,3 +210,6 @@ threadId | int | Thread ID
 Name | Type | Description
 ---- | ---- | -----------
 message | string | Message body
+
+### Returns
+This endpoint returns a single Thread object.

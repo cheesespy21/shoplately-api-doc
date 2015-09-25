@@ -50,9 +50,12 @@ This endpoint retrieves a full category tree.
 
 ### HTTP Request
 
-`GET /api/v1/categories`
+`GET /v1/categories`
 
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
 depth | 10 | Maximum number of child categories to traverse from the root level
+
+### Returns
+This endpoint returns an array of Category objects.

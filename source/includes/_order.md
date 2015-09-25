@@ -133,7 +133,7 @@ This endpoint retrieves all orders.
 
 ### HTTP Request
 
-`GET /api/v1/orders`
+`GET /v1/orders`
 
 ### Query Parameters
 
@@ -143,6 +143,103 @@ pending | false | Include pending orders (orders that have not been fully charge
 canceled | false | Include canceled orders
 page | 1 | Page number
 limit | 25 | The number of orders to be retrieved
+
+### Returns
+This endpoint returns an array of Purchase objects.
+
+## Get a Specific Order
+
+```shell
+curl "http://api.lately.com/v1/order/100" \
+  -H "X-SHOPLATELY-API-KEY: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+  {
+      "purchaseId": 100,
+      "user": {
+          "userId": 100,
+          "name": "Henry Jekyll",
+          "image": null,
+          "createdTime": 1234567890
+      },
+      "shippingAddress": {
+        "firstName": "Henry",
+          "lastName": "Jekyll",
+          "addressLine1": "123 Test St.",
+          "addressLine2": "Apt. 99",
+          "city": "San Jose",
+          "state": "CA",
+          "zipCode": "95126",
+          "zipCodeExt": "",
+          "phoneNumber": "123-456-7890"
+      },
+      "details": [
+          {
+              "purchaseDetailId": 100,
+              "product": { ... },
+              "shipment": {
+                  "shipmentId": 100,
+                  "shipmentProvider": "USPS",
+                  "shipmentType": "First-Class Mail",
+                  "trackingNumber": "ABCDEFGHIJK0123456789",
+                  "weight": 0.19,
+                  "volume": 70.13,
+                  "price": 5.00,
+                  "shippedTime": 1234567890,
+                  "deliveredTime": 1234567890
+              },
+              "quantity": 5,
+              "unitPrice": 10,
+              "price": 50,
+              "tax": 4,
+              "isCanceled": false,
+              "isShipped": true,
+              "isDelivered": true,
+              "quantityReturned": 0
+          }
+      ],
+      "refunds": [
+          {
+              "refundId": 8124,
+              "productRefund": "18.99",
+              "shippingRefund": "0.00",
+              "otherRefund": "0.00",
+              "totalRefund": "18.99",
+              "refundTime": 1442216740
+          }
+      ],
+      "subtotal": 50,
+      "shipping": 5,
+      "tax": 4,
+      "ccPrice": 57,
+      "creditPrice": 0,
+      "taxRate": 0.08,
+      "taxCountyName": "SANTA CLARA",
+      "taxCountyNumber": 123,
+      "isShippingTaxable": false,
+      "isPending": false,
+      "isCanceled": false,
+      "createdTime": 1234567890
+  }
+```
+
+This endpoint retrieves a specific order.
+
+### HTTP Request
+
+`GET /v1/orders/<purchaseId>`
+
+### URL Parameters
+
+Name | Type | Description
+---- | ---- | -----------
+purchaseId | int | Purchase ID
+
+### Returns
+This endpoint returns a single Purchase object.
 
 
 ## Confirm Shipping
@@ -184,7 +281,7 @@ This endpoint marks specified purchase details as shipped.
 
 ### HTTP Request
 
-`POST /api/v1/orders/<purchaseId>/shipping`
+`POST /v1/orders/<purchaseId>/shipping`
 
 ### URL Parameters
 Name | Type | Description
@@ -204,7 +301,8 @@ price | float | Total shipping price
 shippedTime | int | UNIX timestamp of ship time
 deliveredTime | int | UNIX timestamp of delivered time
 
-
+### Returns
+This endpoint returns a single Shipment object.
 
 ## Cancel Order
 
@@ -268,11 +366,14 @@ curl -XDELETE "http://api.lately.com/v1/orders/300" \
 
 ### HTTP Request
 
-`DELETE /api/v1/orders/<purchaseId>`
+`DELETE /v1/orders/<purchaseId>`
 
 ### URL Parameters
 Name | Type | Description
 ---- | ---- | -----------
 purchaseId | int | Purchase ID
+
+### Returns
+This endpoint returns a single Purchase object.
 
 
