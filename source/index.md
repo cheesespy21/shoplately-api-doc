@@ -21,7 +21,7 @@ search: true
 
 # Introduction
 
-[Shoplately](http://shoplately.com) API documentation
+[Lately](http://shoplately.com) API documentation
 
 # Authentication
 
@@ -35,7 +35,7 @@ curl "api_endpoint_here"
 
 > Make sure to replace `meowmeowmeow` with your API key.
 
-Shoplately expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Lately expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
 `X-SHOPLATELY-API-KEY: meowmeowmeow`
 
