@@ -138,6 +138,7 @@ Name | Type | Description
 ---- | ---- | -----------
 purchaseDetailId | int | Purchase detail ID
 product | object | Product object
+option | object | Option object
 shipment | object | Shipment object
 quantity | int | Total quantity ordered
 unitPrice | float | Unit price
