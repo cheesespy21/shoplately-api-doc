@@ -34,6 +34,7 @@ curl "http://api.lately.com/v1/orders" \
             {
                 "purchaseDetailId": 100,
                 "product": { ... },
+                "option": { ... },
                 "shipment": {
                     "shipmentId": 100,
                     "shipmentProvider": "USPS",
@@ -101,6 +102,7 @@ curl "http://api.lately.com/v1/orders" \
             {
                 "purchaseDetailId": 200,
                 "product": { ... },
+                "option": { ... },
                 "shipment": null,
                 "quantity": 2,
                 "unitPrice": 20,
@@ -180,6 +182,7 @@ curl "http://api.lately.com/v1/order/100" \
           {
               "purchaseDetailId": 100,
               "product": { ... },
+              "option": { ... },
               "shipment": {
                   "shipmentId": 100,
                   "shipmentProvider": "USPS",
@@ -337,6 +340,7 @@ curl -XDELETE "http://api.lately.com/v1/orders/300" \
         {
             "purchaseDetailId": 200,
             "product": { ... },
+            "option": { ... },
             "shipment": null,
             "quantity": 2,
             "unitPrice": 20,
