@@ -299,6 +299,11 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>The regular price (used for comparison when the product is on sale)</td>
 </tr>
 <tr>
+<td>sku</td>
+<td>string</td>
+<td>SKU of product</td>
+</tr>
+<tr>
 <td>views</td>
 <td>int</td>
 <td>Number of views this product has received</td>
@@ -905,6 +910,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
     </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
     </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
     </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.99</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-PRODUCT-SKU-1"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/1/my-awesome-product"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1015,6 +1021,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
     </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
     </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
     </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-PRODUCT-SKU-2"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
     </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/2/your-awesome-product"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1170,6 +1177,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
   </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
   </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-PRODUCT-SKU-1"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/1/my-awesome-product"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1310,6 +1318,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
         "categoryId": 2,
         "regularPrice": 19.99,
         "salePrice": 19.99,
+        "sku": "MY-PRODUCT-SKU-1",
         "optionDetail2Type": "Color",
         "options": [
           {
@@ -1353,6 +1362,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
   </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
   </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-PRODUCT-SKU-1"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/3/my-awesome-new-product"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1449,6 +1459,12 @@ The top-most parent will have <strong>null</strong> as its parent value.
 
 <p>The <code class="prettyprint">Company</code> is automatically set based on the company associated with the user&rsquo;s API key.</p>
 
+<p>All new products must have &ldquo;Size&rdquo; option details; a section option detail type (e.g. Color, Material) is optional. If a product has a second option detail type, be sure to specify it in <code class="prettyprint">optionDetail2Type</code>.</p>
+
+<p>If a product only has a &ldquo;Size&rdquo; option detail type, an <code class="prettyprint">images</code> array is required only once. If multiple <code class="prettyprint">images</code> arrays are provided for size-only products, the arrays will be merged (size images are shared across all sizes).</p>
+
+<p>If a product has both &ldquo;Size&rdquo; and a second option detail type, an <code class="prettyprint">images</code> array is required for each option.</p>
+
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">POST /v1/products</code></p>
@@ -1501,6 +1517,11 @@ The top-most parent will have <strong>null</strong> as its parent value.
 <td>salePrice</td>
 <td>float</td>
 <td>Discounted on-sale price</td>
+</tr>
+<tr>
+<td>sku</td>
+<td>string</td>
+<td>SKU of product</td>
 </tr>
 <tr>
 <td>optionDetail2Type</td>
@@ -1578,6 +1599,7 @@ The top-most parent will have <strong>null</strong> as its parent value.
   </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
   </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-PRODUCT-SKU-100"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/100/my-awesome-updated-product"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1697,6 +1719,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
   </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
   </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-PRODUCT-SKU-300"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/300/some-product"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1800,6 +1823,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
   </span><span class="nt">"sold"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
   </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
   </span><span class="nt">"regularPrice"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.99</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MY-PRODUCT-SKU-300"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://shoplately.com/product/300/some-product"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"isBackInStock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -1888,6 +1912,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
             </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"purchaseDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"option"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
                 </span><span class="nt">"shipment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"shipmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"shipmentProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span><span class="w">
@@ -1955,6 +1980,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
             </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"purchaseDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"option"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
                 </span><span class="nt">"shipment"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
@@ -2055,6 +2081,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
           </span><span class="p">{</span><span class="w">
               </span><span class="nt">"purchaseDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
               </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+              </span><span class="nt">"option"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
               </span><span class="nt">"shipment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                   </span><span class="nt">"shipmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"shipmentProvider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USPS"</span><span class="p">,</span><span class="w">
@@ -2273,6 +2300,7 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"purchaseDetailId"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
             </span><span class="nt">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"option"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
             </span><span class="nt">"shipment"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="nt">"unitPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
