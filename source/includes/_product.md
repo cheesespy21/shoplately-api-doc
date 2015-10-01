@@ -21,6 +21,7 @@ curl "https://api.lately.com/v1/products" \
     "sold": 5,
     "price": 20,
     "regularPrice": 25.99,
+    "sku": "MY-PRODUCT-SKU-1",
     "views": 100,
     "url": "https://shoplately.com/product/1/my-awesome-product",
     "isBackInStock": false,
@@ -131,6 +132,7 @@ curl "https://api.lately.com/v1/products" \
     "sold": 10,
     "price": 19.99,
     "regularPrice": 19.99,
+    "sku": "MY-PRODUCT-SKU-2",
     "views": 50,
     "url": "https://shoplately.com/product/2/your-awesome-product",
     "isBackInStock": false,
@@ -266,6 +268,7 @@ curl "https://api.lately.com/v1/products/1" \
   "sold": 5,
   "price": 20,
   "regularPrice": 25.99,
+  "sku": "MY-PRODUCT-SKU-1",
   "views": 100,
   "url": "https://shoplately.com/product/1/my-awesome-product",
   "isBackInStock": false,
@@ -396,6 +399,7 @@ curl -XPOST "https://api.lately.com/v1/products" \
         "categoryId": 2,
         "regularPrice": 19.99,
         "salePrice": 19.99,
+        "sku": "MY-PRODUCT-SKU-1",
         "optionDetail2Type": "Color",
         "options": [
           {
@@ -439,6 +443,7 @@ curl -XPOST "https://api.lately.com/v1/products" \
   "sold": 0,
   "price": 19.99,
   "regularPrice": 19.99,
+  "sku": "MY-PRODUCT-SKU-1",
   "views": 0,
   "url": "https://shoplately.com/product/3/my-awesome-new-product",
   "isBackInStock": false,
@@ -535,6 +540,12 @@ This endpoint facilitates the creation of a new product.
 
 The `Company` is automatically set based on the company associated with the user's API key.
 
+All new products must have "Size" option details; a section option detail type (e.g. Color, Material) is optional. If a product has a second option detail type, be sure to specify it in `optionDetail2Type`.
+
+If a product only has a "Size" option detail type, an `images` array is required only once. If multiple `images` arrays are provided for size-only products, the arrays will be merged (size images are shared across all sizes).
+
+If a product has both "Size" and a second option detail type, an `images` array is required for each option.
+
 ### HTTP Request
 
 `POST /v1/products`
@@ -550,6 +561,7 @@ saleEventId | int | Existing sale event ID
 categoryId | int | Existing category ID
 regularPrice | float | Regular price
 salePrice | float | Discounted on-sale price
+sku | string | SKU of product
 optionDetail2Type | string | Second option detail type
 options | array | (See below.)
 
@@ -595,6 +607,7 @@ curl -XPUT "https://api.lately.com/v1/products/100" \
   "sold": 5,
   "price": 19.99,
   "regularPrice": 19.99,
+  "sku": "MY-PRODUCT-SKU-100",
   "views": 100,
   "url": "https://shoplately.com/product/100/my-awesome-updated-product",
   "isBackInStock": false,
@@ -666,6 +679,7 @@ curl -XPUT "https://api.lately.com/v1/options/450" \
   "sold": 5,
   "price": 19.99,
   "regularPrice": 19.99,
+  "sku": "MY-PRODUCT-SKU-300",
   "views": 100,
   "url": "https://shoplately.com/product/300/some-product",
   "isBackInStock": false,
@@ -749,6 +763,7 @@ curl -XDELETE "https://api.lately.com/v1/options/450" \
   "sold": 5,
   "price": 19.99,
   "regularPrice": 19.99,
+  "sku": "MY-PRODUCT-SKU-300",
   "views": 100,
   "url": "https://shoplately.com/product/300/some-product",
   "isBackInStock": false,

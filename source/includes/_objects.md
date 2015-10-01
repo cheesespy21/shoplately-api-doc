@@ -55,6 +55,7 @@ quantity | int | Available quantity across all options
 sold | int | Total sold across all options
 price | float | Current price
 regularPrice | float | The regular price (used for comparison when the product is on sale)
+sku | string | SKU of product
 views | int | Number of views this product has received
 url | string | Absolute URL of the product page
 isBackInStock | bool | If the product was recently restocked
