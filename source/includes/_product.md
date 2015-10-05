@@ -565,6 +565,97 @@ sku | string | SKU of product
 optionDetail2Type | string | Second option detail type
 options | array | (See below.)
 
+#### Examples
+
+Product which has a color option only.
+
+```json
+{
+  "sku": "LTG11113",
+  "name": "Asics Gel Kayano 21",
+  "description": "상세설명",
+  "material": "소재",
+  "measurement": "치수",
+  "saleEventId": "",
+  "categoryId": "1",
+  "regularPrice": "10",
+  "salePrice": "9",
+  "optionDetail2Type": "color",
+
+  "options": [
+    {
+      "sku": "some-sku-11",
+      "quantity": 20,
+      "details": {
+        "Size": "default",
+        "color": "grey"
+      },
+      "images": [ "http://ecx.images-amazon.com/images/I/81FtvFpVqxL._UX695_.jpg" ]
+    },
+
+    {
+      "sku": "some-sku-22",
+      "quantity": 20,
+      "details": {
+        "Size": "default",
+        "color": "Black"
+      },
+      "images": [
+        "http://ecx.images-amazon.com/images/I/81AEaeUUp0L._UX535_.jpg",
+        "http://ecx.images-amazon.com/images/I/81fcacwzeEL._UY535_.jpg"
+      ]
+    }
+  ]
+}
+```
+
+Product which has a size option only.
+
+```json
+{
+  "sku": "LTG11112",
+  "name": "상품명",
+  "description": "상세설명",
+  "material": "소재",
+  "measurement": "치수",
+  "saleEventId": "",
+  "categoryId": "1",
+  "regularPrice": "10",
+  "salePrice": "9",
+  "optionDetail2Type": null,
+
+  "options": [
+    {
+      "sku": "some-sku-1",
+      "quantity": 20,
+      "details": {
+        "Size": "Small"
+      },
+      "images": [ "http://scene7.targetimg1.com/is/image/Target/16902150?wid=480&hei=480" ]
+    },
+
+    {
+      "sku": "some-sku-2",
+      "quantity": 20,
+      "details": {
+        "Size": "Medium"
+      },
+      "images": [ ]
+    },
+
+    {
+      "sku": "some-sku-3",
+      "quantity": 20,
+      "details": {
+        "Size": "Large"
+      },
+      "images": [ ]
+    }
+  ]
+}
+```
+
+
 ### Option Object
 Name | Type | Description
 ---- | ---- | -----------
