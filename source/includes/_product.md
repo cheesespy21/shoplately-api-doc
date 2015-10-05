@@ -536,38 +536,8 @@ curl -XPOST "https://api.lately.com/v1/products" \
 }
 ```
 
-This endpoint facilitates the creation of a new product.
 
-The `Company` is automatically set based on the company associated with the user's API key.
-
-All new products must have "Size" option details; a section option detail type (e.g. Color, Material) is optional. If a product has a second option detail type, be sure to specify it in `optionDetail2Type`.
-
-If a product only has a "Size" option detail type, an `images` array is required only once. If multiple `images` arrays are provided for size-only products, the arrays will be merged (size images are shared across all sizes).
-
-If a product has both "Size" and a second option detail type, an `images` array is required for each option.
-
-### HTTP Request
-
-`POST /v1/products`
-
-### Payload
-Name | Type | Description
----- | ---- | -----------
-name | string | Product name
-description | string | Product description
-material | string | Product material description
-measurement | string | Product measurement description
-saleEventId | int | Existing sale event ID
-categoryId | int | Existing category ID
-regularPrice | float | Regular price
-salePrice | float | Discounted on-sale price
-sku | string | SKU of product
-optionDetail2Type | string | Second option detail type
-options | array | (See below.)
-
-### Examples
-
-Product which has a color option only.
+> Example product which has a color option only.
 
 ```json
 {
@@ -609,7 +579,7 @@ Product which has a color option only.
 }
 ```
 
-Product which has a size option only.
+> Example product which has a size option only.
 
 ```json
 {
@@ -654,6 +624,36 @@ Product which has a size option only.
   ]
 }
 ```
+
+This endpoint facilitates the creation of a new product.
+
+The `Company` is automatically set based on the company associated with the user's API key.
+
+All new products must have "Size" option details; a section option detail type (e.g. Color, Material) is optional. If a product has a second option detail type, be sure to specify it in `optionDetail2Type`.
+
+If a product only has a "Size" option detail type, an `images` array is required only once. If multiple `images` arrays are provided for size-only products, the arrays will be merged (size images are shared across all sizes).
+
+If a product has both "Size" and a second option detail type, an `images` array is required for each option.
+
+### HTTP Request
+
+`POST /v1/products`
+
+### Payload
+Name | Type | Description
+---- | ---- | -----------
+name | string | Product name
+description | string | Product description
+material | string | Product material description
+measurement | string | Product measurement description
+saleEventId | int | Existing sale event ID
+categoryId | int | Existing category ID
+regularPrice | float | Regular price
+salePrice | float | Discounted on-sale price
+sku | string | SKU of product
+optionDetail2Type | string | Second option detail type
+options | array | (See below.)
+
 
 
 ### Option Object
