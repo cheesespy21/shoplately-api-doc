@@ -565,7 +565,7 @@ sku | string | SKU of product
 optionDetail2Type | string | Second option detail type
 options | array | (See below.)
 
-#### Examples
+### Examples
 
 Product which has a color option only.
 
