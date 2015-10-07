@@ -833,6 +833,81 @@ quantity | int | Available quantity of this option
 This endpoint returns a single Product object.
 
 
+## Add Product Images
+
+```shell
+curl -XPOST "https://api.lately.com/v1/products/1/images" \
+  -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
+  -H "Content-Type: application/json" \
+  -d "{
+        "optionDetailId": 456,
+        "images": [ 
+          "http://www.example.com/products/my-external-image-1.jpg",
+          "http://www.example.com/products/my-external-image-2.jpg"
+        ]
+      }"
+```
+
+> The above command returns a single Product object.
+
+This endpoint allows the addition of additional images to products.
+
+All `option` objects have 2 `detail` objects. Images are associated with the second `detail` object, as these are the options distributed across all Sizes. 
+
+### HTTP Request
+
+`POST /v1/products/<productId>/images`
+
+### URL Parameters
+Name | Type | Description
+---- | ---- | -----------
+productId | int | Product ID
+
+### Payload
+Name | Type | Description
+---- | ---- | -----------
+optionDetailId | int | Option detail ID
+images | array | Absolute image URLs
+  
+### Returns
+This endpoint returns a single Product object.
+
+
+## Delete Product Images
+```shell
+curl -XDELETE "https://api.lately.com/v1/products/1/images" \
+  -H "X-SHOPLATELY-API-KEY: meowmeowmeow" \
+  -H "Content-Type: application/json" \
+   -d "{
+        "images": [ 
+          "https://api.lately.com/img/fdeal/original/0/1/12345_1234567890.0001.jpg"
+          "https://api.lately.com/img/fdeal/original/0/1/12345_1234567890.0002.jpg"
+        ]
+      }"
+```      
+
+> The above command returns a single Product object.
+
+This endpoint allows the deletion of one or more images from a product. Please note, at least one image must exist per option detail. If you need to replace all product images, upload the new ones first and delete the old ones.
+
+### HTTP Request
+
+`DELETE /v1/products/<productId>/images`
+
+### URL Parameters
+Name | Type | Description
+---- | ---- | -----------
+productId | int | Product ID
+
+### Payload
+Name | Type | Description
+---- | ---- | -----------
+images | array | Absolute Lately image URLs
+
+### Returns
+This endpoint returns a single Product object.
+
+
 ## Out of stock
 
 ```shell
