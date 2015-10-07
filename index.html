@@ -1892,6 +1892,130 @@ See <a href="#update-product-quantity">Update Product Quantity</a> for more info
 
 <p>This endpoint returns a single Product object.</p>
 
+<h2 id="add-product-images">Add Product Images</h2>
+<pre class="highlight shell"><code>curl -XPOST <span class="s2">"https://api.lately.com/v1/products/1/images"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s2">"{
+        "</span>optionDetailId<span class="s2">": 456,
+        "</span>images<span class="s2">": [ 
+          "</span>http://www.example.com/products/my-external-image-1.jpg<span class="s2">",
+          "</span>http://www.example.com/products/my-external-image-2.jpg<span class="s2">"
+        ]
+      }"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns a single Product object.</p>
+</blockquote>
+
+<p>This endpoint allows the addition of additional images to products.</p>
+
+<p>All <code class="prettyprint">option</code> objects have 2 <code class="prettyprint">detail</code> objects. Images are associated with the second <code class="prettyprint">detail</code> object, as these are the options distributed across all Sizes. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /v1/products/&lt;productId&gt;/images</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>productId</td>
+<td>int</td>
+<td>Product ID</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload">Payload</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>optionDetailId</td>
+<td>int</td>
+<td>Option detail ID</td>
+</tr>
+<tr>
+<td>images</td>
+<td>array</td>
+<td>Absolute image URLs</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Product object.</p>
+
+<h2 id="delete-product-images">Delete Product Images</h2>
+<pre class="highlight shell"><code>curl -XDELETE <span class="s2">"https://api.lately.com/v1/products/1/images"</span> <span class="se">\</span>
+  -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s2">"{
+        "</span>images<span class="s2">": [ 
+          "</span>https://api.lately.com/img/fdeal/original/0/1/12345_1234567890.0001.jpg<span class="s2">"
+          "</span>https://api.lately.com/img/fdeal/original/0/1/12345_1234567890.0002.jpg<span class="s2">"
+        ]
+      }"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns a single Product object.</p>
+</blockquote>
+
+<p>This endpoint allows the deletion of one or more images from a product. Please note, at least one image must exist per option detail. If you need to replace all product images, upload the new ones first and delete the old ones.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /v1/products/&lt;productId&gt;/images</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>productId</td>
+<td>int</td>
+<td>Product ID</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload">Payload</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>images</td>
+<td>array</td>
+<td>Absolute Lately image URLs</td>
+</tr>
+</tbody></table>
+
+<h3 id="returns">Returns</h3>
+
+<p>This endpoint returns a single Product object.</p>
+
 <h2 id="out-of-stock">Out of stock</h2>
 <pre class="highlight shell"><code>curl -XDELETE <span class="s2">"https://api.lately.com/v1/options/450"</span> <span class="se">\</span>
   -H <span class="s2">"X-SHOPLATELY-API-KEY: meowmeowmeow"</span> <span class="se">\</span>
